@@ -2,6 +2,7 @@ import os
 import urllib.request
 import requests
 from bs4 import BeautifulSoup
+import argparse
 
 def intranetSpider(folderURL, baseDir):
     '''
@@ -52,10 +53,17 @@ def intranetSpider(folderURL, baseDir):
     return
 
 if __name__ == '__main__':
-    folderURL = "http://intranet.daiict.ac.in/~daiict_nt01/Lecture/ANISH%20MATHURIA/IT486/"
-    baseDir = "/home/chahak/Documents/Blockchain/"
-    if os.path.isdir(baseDir):
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("folderURL", type = str, required = True, help = "The URL of the folder from the intranet that needs to be downloaded.")
+    parser.add_argument("baseDir", type = str, required = True, help = "Path of the local folder where the files will be downloaded.")
+    args = parser.argparser()
+
+    # folderURL = "http://intranet.daiict.ac.in/~daiict_nt01/Lecture/ANISH%20MATHURIA/IT486/"
+    # baseDir = "/home/chahak/Documents/Blockchain/"
+
+    if os.path.isdir(args.baseDir):
         continue
     else:
-        os.mkdir(baseDir)
-    intranetSpider(folderURL, baseDir)
+        os.mkdir(args.baseDir)
+    intranetSpider(args.folderURL, args.baseDir)
