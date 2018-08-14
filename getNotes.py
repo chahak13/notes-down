@@ -52,6 +52,10 @@ def intranetSpider(folderURL, baseDir):
     return
 
 if __name__ == '__main__':
-    folderURL = "http://intranet.daiict.ac.in/~daiict_nt01/Lecture/Prasenjit%20Majumder/IT476/"
-    baseDir = "/home/chahak/Documents/HCI/"
+    folderURL = "http://intranet.daiict.ac.in/~daiict_nt01/Lecture/ANISH%20MATHURIA/IT486/"
+    baseDir = "/home/chahak/Documents/Blockchain/"
+    if os.path.isdir(baseDir):
+        continue
+    else:
+        os.mkdir(baseDir)
     intranetSpider(folderURL, baseDir)
